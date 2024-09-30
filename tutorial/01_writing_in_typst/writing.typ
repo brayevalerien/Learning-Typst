@@ -69,16 +69,16 @@ Inline equations work similarly to LaTeX, simply by using "\$" (I had to escape 
 
 Diffusion models usually try to sample new a data point $x_0$ following the training data distribution, using what's called a reverse diffusion process to progressively denoise a pure gaussian noise sample $x_T arrow.r.hook cal(N)(0, 1)$.
 
-It wasn't obvious how to write the round $cal(N)$, but apparently you can symply use the "cal" function in math mode @mathfonts. I can't wait to learn how to write inline code just to be able to properly write "cal" instead of using double quotes by the way! It also demonstrates how Typst uses functions in math mode to define custom symbols. I guess I will learn how to defin custom functions latter on in this tutorial?
+It wasn't obvious how to write the round $cal(N)$, but apparently you can symply use the "cal" function in math mode @mathfonts. I can't wait to learn how to write inline code just to be able to properly write "cal" instead of using double quotes by the way! It also demonstrates how Typst uses functions in math mode to define custom symbols. I guess I will learn how to define custom functions latter on in this tutorial?
 
-writing $arrow.r.hook$ is interesting. Indeed, it shows that symbols are defined as elements of classes. $arrow.r.hook$ is the "hook" element of the "arrow.r" (right arrow) class.
+Writing $arrow.r.hook$ is interesting. Indeed, it shows that symbols are defined as elements of classes. $arrow.r.hook$ is the "hook" element of the "arrow.r" (right arrow) class.
 
 == Full equations
-writing inline equations is easy. But it's as easy to put them on their own line! I just need to put the equation on it's own line in the source code, separating it from the previous and next paragraphs with line breaks and placing spaces between the "\$" symbols and the equation.
+Writing inline equations is easy. But it's as easy to put them on their own line! I just need to put the equation on it's own line in the source code, separating it from the previous and next paragraphs with line breaks and placing spaces between the "\$" symbols and the equation.
 
-The reverse diffusion process of a diffusion model is defined by it's _reverse diffusion kernel_ $q(x_t |x_(t-1))$. Since the process is markovian, $x_T, x_(T-1), ..., x_1$ are independent and we can thus get the joint probability distribution of these variables:
+The reverse diffusion process of a diffusion model is defined by it's _reverse diffusion kernel_ $q(x_t |x_(t-1))$. Since the process is markovian, $x_T, x_(T-1), ..., x_1$ are independent and we can thus get the joint probability distribution of these variables conditionally to $x_0$:
 
-$ x_(t-1) = product_(t=1)^T q(x_t | x_(t-1)) $
+$ q(x_1, ..., x_T | x_0) = product_(t=1)^T q(x_t | x_(t-1)) $
 
 I notice two things right of the bat:
 - to group things together, we use parenthesis "()" and not curly brackets "{}"
